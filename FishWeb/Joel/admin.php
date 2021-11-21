@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $imagen = "fotos/" . $nombre;
             }
             $query = mysqli_query($db, "INSERT INTO Nosotros(nombre,carrera,numero_control,foto) VALUES('$nombre1','$carrera1','$numero1','$imagen')");
-            header('Location: admin.php?registrado');
+            header('Location: nosotrosAdmin.php?registrado');
         }
     }
 
@@ -114,11 +114,11 @@ function verificarEntrada($entrada)
                     <i class="fa fa-home fa-icon nav__item"></i>
                     Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                <!-- <li class="nav-item active nav__item text-center">
-                    <a class="nav-link nav__item text-white" href="./nosotros.php">
+                <li class="nav-item active nav__item text-center">
+                    <a class="nav-link nav__item text-white" href="./nosotrosAdmin.php">
                     <i class="fa fa-users fa-icon nav__item"></i>
                     Nosotros </a>
-                </li> -->
+                </li>
                 <li class="nav-item dropdown nav__item text-center">
                     <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-list fa-icon nav__item"></i>
