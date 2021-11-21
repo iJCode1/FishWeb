@@ -46,6 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("location:./lector.php");
             } else if ($dato['rol'] == "escritor") {
                 header("location:./escritor.php");
+            }else if ($dato['rol'] == "admin") {
+                header("location:./admin.php");
             }
         } else {
             $ErrorLogin = "No se encontro ese usuario y contraseña en la BD";
@@ -102,6 +104,11 @@ function verificarEntrada($entrada)
                     <a class="nav-link nav__item text-white" href="./index.php">
                     <i class="fa fa-home fa-icon nav__item"></i>    
                     Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active nav__item text-center">
+                    <a class="nav-link nav__item text-white" href="./nosotros.php">
+                    <i class="fa fa-users fa-icon nav__item"></i>    
+                    Nosotros </a>
                 </li>
                 <li class="nav-item dropdown nav__item text-center">
                     <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
