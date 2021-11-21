@@ -1,6 +1,7 @@
 <?php
-include 'db.php';
+require 'db.php';
 session_start();
+
 $genero = $_SESSION["genero"];
 $usuario = $_SESSION["usuario"];
 ?>
@@ -16,7 +17,7 @@ $usuario = $_SESSION["usuario"];
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="shortcut icon" href="../images/icon/logo.png" type="image/x-icon">
-  <title>FishWeb - Nosotros</title>
+  <title>FishWeb - Lector</title>
 </head>
 
 <body>
@@ -33,18 +34,13 @@ $usuario = $_SESSION["usuario"];
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active nav__item text-center">
-                    <a class="nav-link nav__item text-white" href="./admin.php">
-                    <i class="fa fa-home fa-icon nav__item"></i>    
+                    <a class="nav-link nav__item text-white" href="./registro.php">
+                    <i class="fa fa-home fa-icon nav__item"></i>
                     Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active nav__item text-center">
-                    <a class="nav-link nav__item text-white" href="./nosotrosAdmin.php">
-                    <i class="fa fa-users fa-icon nav__item"></i>    
-                    Nosotros </a>
                 </li>
                 <li class="nav-item dropdown nav__item text-center">
                     <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-list fa-icon nav__item"></i>    
+                    <i class="fa fa-list fa-icon nav__item"></i>
                     Categorías
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -58,76 +54,13 @@ $usuario = $_SESSION["usuario"];
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar Articulo" aria-label="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
-                <ul class="navbar-nav mr-0 fish__login--btn">
-                <li class="nav-item active text-center mx-2 nav__item">
-                    <a class="nav-link text-white nav__item">
-                    <i class="fa fa-user fa-icon nav__item"></i>
-    <?php
-if ($genero != "") {
-    if ($genero == "F") {
-        echo "Bienvenida  " . $usuario;
-    } else if($genero == "M") {
-        echo "Bienvenido  " . $usuario;
-    }
-    ?><?php
-}?>
-                </a>
-                </li>
-                <li class="nav-item active text-center mx-2 nav__item">
-                    <a class="nav-link text-white nav__item" href="salir.php">
-                    <i class="fa fa-sign-in fa-icon nav__item"></i>
-                    Cerrar Sesión
-                </a>
-                </li>
-                </ul>
             </div>
         </nav>
       </div>
     </div>
-    <main class="involucrados">
-      <div class="card mt-4 card--admin">
-        <div class="card-body">
-          <h2 class="text-center display-4 mt-3">Involucrados en el Proyecto</h2>
-          <hr class="mt-4 mb-3"/>
-          <table class="table table-hover table-striped mt-4">
-            <thead class="thead-dark">
-              <tr>
-                <th>Fotografía</th>
-                <th>Nombre</th>
-                <th>Carrera</th>
-                <th>Número de control</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-              </tr>
-            </thead>
-      <?php
-
-$consulta = "SELECT *from  Nosotros";
-$res_consulta = mysqli_query($db, $consulta);
-while ($i = mysqli_fetch_array($res_consulta)) {
-    ?>
-            <tr>
-              <td>
-                <?php echo '<img src="'.$i['foto'].'" width=80px height=auto/>' ?>  
-              </td>
-              <td><?php echo $i['nombre'] ?></td>
-              <td><?php echo $i['carrera'] ?></td>
-              <td><?php echo $i['numero_control'] ?></td>
-              <td>
-              <a onclick="" class="btn btn-success" href="editar.php?id_nosotros=<?php echo $i['id_nosotros']; ?>">Editar</a>
-              </td>
-              <td>
-                <a onclick="return confirm('Deseas eliminar el registro?');" class="btn btn-danger" href="eliminar.php?id_nosotros=<?php echo $i['id_nosotros']; ?>">Eliminar</a>
-              </td>
-            </tr>
-            <?php
-}
-
-?>
-    </table>
-        </div>
-      </div>
-    </main>
+    <div>
+        <h2 class="text-center display-3">Lector</h2>
+    </div>
 </div>
 <footer class="fixed-bottom">
     <p>FishWeb</p>

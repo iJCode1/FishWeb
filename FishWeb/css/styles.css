@@ -94,9 +94,19 @@ footer p{
   background-color: #6E85B2;
   color: white;
 }
+.btn__registrar:hover{
+  background-color: #334c7d;
+  color: white;
+  transform: scale(1.03);
+}
 .btn__regresar{
   background-color: #FA8072;
   color: white;
+}
+.btn__regresar:hover{
+  background-color: #912317;
+  color: white;
+  transform: scale(1.03);
 }
 /* -----------------------------    Nosotros */
 .involucrados{

@@ -67,9 +67,9 @@ $i = mysqli_fetch_array($res_consulta);
                     <i class="fa fa-user fa-icon nav__item"></i>
     <?php
 if ($genero != "") {
-    if ($genero == "M") {
+    if ($genero == "F") {
         echo "Bienvenida  " . $usuario;
-    } else if($genero == "H") {
+    } else if($genero == "M") {
         echo "Bienvenido  " . $usuario;
     }
     ?><?php

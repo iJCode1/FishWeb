@@ -38,13 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if ($correoErr == "" && $contraseñaErr == "" && $usuarioErr == "") {
         // $id = $_GET['id_corredor'];
-        $sentencia = "INSERT INTO Usuarios(correo,contraseña,usuario,rol,genero) VALUES('$correo','".sha1($contraseña)."','$usuario','$rol1','$genero1')";
+        //$sentencia = "INSERT INTO Usuarios(correo,contraseña,usuario,rol,genero) VALUES('$correo','".sha1($contraseña)."','$usuario','$rol1','$genero1')";
 
-        if (mysqli_query($db, $sentencia)) {
-            header('Location: login.php?mensaje=registrado');
-        } else {
-          header('Location: registro.php?mensaje=no_registrado');
-        }
+        // if (mysqli_query($db, $sentencia)) {
+        //     header('Location: login.php?mensaje=registrado');
+        // } else {
+        //   header('Location: registro.php?mensaje=no_registrado');
+        // }
+        if ($rol1 == "lector") {
+          header("location:./terminosLector.php");
+      } else if ($rol1 == "escritor") {
+          header("location:./terminosEscritor.php");
+      }
     }
 
 }
@@ -122,7 +127,7 @@ function verificarEntrada($entrada)
             </div>
           <button type="submit" class="btn btn-block btn__registrar">
             <i class="fa fa-check-circle-o"></i>
-            Registrar</button>
+            Continuar</button>
           <a href="index.php" class="btn btn-block btn__regresar">
             <i class="fa fa-arrow-left"></i>
             Regresar</a>
