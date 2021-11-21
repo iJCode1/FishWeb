@@ -131,7 +131,7 @@ function verificarEntrada($entrada)
       </div>
     </div>
     <main class="form__login--wrapper">
-      <h2 class="text-center mt-5">Por favor proporcione sus credendiales</h2>
+      <h2 class="text-center mt-5">Por favor proporcione sus credenciales</h2>
       <div class="card mt-4">
         <div class="card-body">
           <h3 class="text-white text-center py-1 login__title">

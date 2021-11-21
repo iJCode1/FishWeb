@@ -9,6 +9,6 @@ if (!$db) {
     die("La conexión fallo: " . mysqli_connect_error());
 } else {
     mysqli_query($db, "SET NAMES 'UTF8'");
-    echo 'Si se hizo<br>';
+    // echo 'Si se hizo<br>';
 }
 ?>

@@ -61,7 +61,7 @@
         </nav>
       </div>
     </div>
-    <h2 class="text-center text-primary my-4 display-4">Galeria de Imagenes</h2>
+    <h2 class="text-center text-success my-4 display-4">Galería de imágenes</h2>
     <div id="carouselExampleCaptions" class="carousel slide carouselWrapper" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

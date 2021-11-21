@@ -130,5 +130,8 @@ function verificarEntrada($entrada)
       </div>
     </div>
   </div>
+<footer class="fixed-bottom">
+    <p>FishWeb</p>
+</footer>
 </body>
 </html>
