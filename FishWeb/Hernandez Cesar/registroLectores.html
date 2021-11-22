@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="img/logo.ico" />
+    <title>Registro de Lectores</title>
+  </head>
+  <body>
+    <section class="contact-box">
+      <div class="row no-gutters bg-dark">
+        <div class="col-xl-5 col-lg-12 register-bg">
+          <div class="position-absolute testiomonial p-4">
+            <h3 class="font-weight-bold text-light">
+              Pescando en la red con FishWeb
+            </h3>
+            <p class="lead text-light">
+              La paciencia y la dedicación hacen al buen pescador.
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-7 col-lg-12 d-flex">
+          <div class="container align-self-center p-6">
+            <h1 class="font-weight-bold mb-3">Lectores</h1>
+            <p class="text-muted mb-5">
+              Ingresa la siguiente información para registrarte.
+            </p>
+            <form>
+              <div class="form-row mb-2">
+                <div class="form-group col-md-6">
+                  <label class="font-weight-bold"
+                    >Nombre(s) <span class="text-danger">*</span></label
+                  >
+                  <input
+                    id="txt-nombre"
+                    type="text"
+                    class="form-control"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="font-weight-bold"
+                    >Apellido Paterno<span class="text-danger">*</span></label
+                  >
+                  <input
+                    id="txt-apPaterno"
+                    type="text"
+                    class="form-control"
+                    placeholder="Tu apellido Paterno"
+                  />
+                </div>
+              </div>
+              <div class="form-row mb-2">
+                <div class="form-group col-md-6">
+                  <label class="font-weight-bold"
+                    >Apellido Materno <span class="text-danger">*</span></label
+                  >
+                  <input
+                    id="txt-apMaterno"
+                    type="text"
+                    class="form-control"
+                    placeholder="Tu apellido Materno"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="font-weight-bold"
+                    >Edad <span class="text-danger">*</span></label
+                  >
+                  <input
+                    id="txt-edad"
+                    type="number"
+                    class="form-control"
+                    placeholder="Tu edad"
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label class="font-weight-bold" for="txt-catInteres"
+                  >Temas de interés <span class="text-danger">*</span></label
+                >
+                <select
+                  class="form-control"
+                  id="txt-catInteres"
+                  name="categorias-interes"
+                  multiple="true"
+                >
+                  <option value="categoriaUno">Cañas de pesca</option>
+                  <option value="categoriaDos">Anzuelos de pesca</option>
+                  <option value="categoriaTres">Pescados exóticos</option>
+                  <option value="categoriaCuatro">
+                    Lugares en México para pescar
+                  </option>
+                </select>
+              </div>
+              <div class="form-group mb-5">
+                <div class="form-check">
+                  <input
+                    id="ck-terminos"
+                    class="form-check-input"
+                    type="checkbox"
+                  />
+                  <label class="form-check-label text-muted"
+                    >Al seleccionar esta casilla aceptas nuestros
+                    <a href="Terminos/terminos.html" target="_blank"
+                      >términos y condiciones</a
+                    >
+                    y nuestras
+                    <a href="Politicas/politicas.html" target="_blank"
+                      >políticas de privacidad</a
+                    >
+                  </label>
+                </div>
+              </div>
+              <button
+                id="boton"
+                class="btn btn-primary width-100"
+                name="botonRegistrate"
+                disabled
+              >
+                Regístrate
+              </button>
+              <script src="validar.js"></script>
+            </form>
+            <small class="d-inline-block text-muted mt-5"
+              >Todos los derechos reservados | © 2021 TecNM ITTol</small
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
