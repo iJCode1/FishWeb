@@ -1,24 +1,26 @@
 <?php
+include "db.php";
 
-include "conexion.php";
+if (isset($_POST['nombre'])){
+    $Nombre = $_POST['nombre'];
+    $apPat = $_POST['apPat'];
+    $apMat = $_POST['apMat'];
+    $RFC = $_POST['RFC'];
+    $Edad = $_POST['Edad'];
+    $Direccion = $_POST['Direccion'];
+    $Telefono = $_POST['Telefono'];
+    $RefArt = $_POST['RefArt'];
+    $categoria = $_POST['categoria'];
 
-$Nombre = $_POST['Nombre'];
-$apPat = $_POST['apPat'];
-$apMat = $_POST['apMat'];
-$RFC = $_POST['RFC'];
-$Edad = $_POST['Edad'];
-$Direccion = $_POST['Direccion'];
-$Telefono = $_POST['Telefono'];
-$RefArt = $_POST['RefArt'];
+    $insertar = "INSERT into escritor values(default, '$Nombre', '$apMat', '$apPat', '$Edad', '$categoria', 'Y', '$RFC', '$Direccion', '$Telefono', '$RefArt', 8)";
 
-$insertar = "INSERT into escritor values(default, '$Nombre', '$apPat', '$apMat', '$Edad', 'categoria1', 'Y', '$RFC', '$Direccion', '$Telefono', '$RefArt')";
+    $resultado = mysqli_query($db, $insertar) or die("Error al insertar los registros");
 
-$resultado = mysqli_query($conexion, $insertar) or die("Error al insertar los registros");
+    mysqli_close($conexion);
 
-mysqli_close($conexion);
-echo "<script>";
+    echo json_encode(array('success' => 1));
+}else{
+    echo json_encode(array('success' => 0));
+}
 
-echo "alert('los datos se actualizaron correctamente')";
-
-echo "</script>";
 ?>
