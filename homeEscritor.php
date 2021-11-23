@@ -97,7 +97,7 @@ $select = mysqli_query($db, $query) or die ("error");
                             echo '<td>' . $datos['titulo'] . '</td>';
                             echo '<td>' . $datos['autor'] . '</td>';
                             echo '<td>' . $datos['fecha'] . '</td>';
-                            echo '<td><button class="btn btn-warning btn-sm">Editar</button></td>';
+                            echo '<td><button class="btn btn-warning btn-sm">Editar </button></td>';
                             echo '<td><button class="btn btn-danger btn-sm">Eliminar</button></td>';
                             echo '<td><button class="btn btn-primary btn-sm">Publicar</button></td>';                        
                             echo '</tr>';  
