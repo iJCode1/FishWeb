@@ -1,0 +1,27 @@
+<?php
+require 'conexion.php';
+session_start();
+
+$genero = $_SESSION["genero"];
+$usuario = $_SESSION["usuario"];
+?>
+
+
+
+
+<?php
+if ($genero != "") {
+    if ($genero == "F") {
+        echo "Bienvenida  " . $usuario;
+    } else if($genero == "M") {
+        echo "Bienvenido  " . $usuario;
+    }
+    ?>
+    <?php
+}?>
+
+
+
+
+
+
