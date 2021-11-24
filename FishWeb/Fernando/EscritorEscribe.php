@@ -82,7 +82,7 @@
         <div class="col-3">
           <div class="form-group">
             <label for="fecha">Fecha</label>
-            <input required name="fecha" type="text" class="form-control" id="fecha" <?php echo "value = '" . date('d')-1 . "-" . date('m') . "-" . date('Y') . "'"?> disabled>                            
+            <input required name="fecha" type="text" class="form-control" id="fecha" <?php echo "value = '" . date('d') . "-" . date('m') . "-" . date('Y') . "'"?> disabled>                            
         </div>
         </div>
         <div class="col-3">
@@ -168,7 +168,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que quiere guardar?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

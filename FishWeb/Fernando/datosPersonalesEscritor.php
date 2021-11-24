@@ -126,29 +126,32 @@ $_SESSION['idUserPer'] = $idUser;
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function(){
-        $("#registrar_esc").click(function(e){      
-            var parametros = {
-                "nombre" : $("#Nombre").val(),
-                "apPat" : $("#apPat").val(),
-                "apMat" : $("#apMat").val(),
-                "RFC" : $("#RFC").val(),
-                "Edad" : $("#Edad").val(),
-                "Telefono" : $("#Telefono").val(),
-                "Direccion" : $("#Direccion").val(),
-                "RefArt" : $("#RefArt").val(),
-                "categoria" : $("#categoria").val()
-        };
-        $.ajax({
-            type: "POST",
-            url: 'InsertarEscritor.php',
-            data: parametros,
-            success: function(response)
-                {
-                    swal("Exito!", "datos insertados correctamente!", "success");
-                    window.location.href = "login.php";
-                }
-        });
-            
+        $("#registrar_esc").click(function(e){     
+            if($("#terminos").prop('checked')){
+                var parametros = {
+                    "nombre" : $("#Nombre").val(),
+                    "apPat" : $("#apPat").val(),
+                    "apMat" : $("#apMat").val(),
+                    "RFC" : $("#RFC").val(),
+                    "Edad" : $("#Edad").val(),
+                    "Telefono" : $("#Telefono").val(),
+                    "Direccion" : $("#Direccion").val(),
+                    "RefArt" : $("#RefArt").val(),
+                    "categoria" : $("#categoria").val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: 'InsertarEscritor.php',
+                    data: parametros,
+                    success: function(response)
+                        {
+                            swal("Exito!", "datos insertados correctamente!", "success");
+                            window.location.href = "login.php";
+                        }
+                });
+            }else{
+                swal("ATENCION!", "No ha aceptado los términos y condiciones!, aceptelos si desea registrarse", "warning");
+            }             
         });
     });
 </script>

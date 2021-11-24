@@ -47,7 +47,7 @@ while($datos = mysqli_fetch_array($select)){
         <div class="col-3">
           <div class="form-group">
             <label for="fecha">Fecha</label>
-            <input required name="fecha" type="text" class="form-control" id="fecha" <?php echo "value = '" . date('d')-1 . "-" . date('m') . "-" . date('Y') . "'"?> disabled>                            
+            <input required name="fecha" type="text" class="form-control" id="fecha" <?php echo "value = '" . date('d') . "-" . date('m') . "-" . date('Y') . "'"?> disabled>                            
         </div>
         </div>
         <div class="col-3">
