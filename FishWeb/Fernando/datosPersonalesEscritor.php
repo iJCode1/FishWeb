@@ -1,3 +1,9 @@
+<?php
+session_start();
+$idUser = $_GET['idUser'];
+$_SESSION['idUserPer'] = $idUser;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +16,6 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="shortcut icon" href="images/icon/logo.png" type="image/x-icon">
   <title>FishWeb - Escritor</title>
-
-
 </head>
 
 <body>
@@ -141,6 +145,7 @@
             success: function(response)
                 {
                     swal("Exito!", "datos insertados correctamente!", "success");
+                    window.location.href = "login.php";
                 }
         });
             

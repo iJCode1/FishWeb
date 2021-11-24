@@ -1,6 +1,6 @@
 <?php
 include "db.php";
-
+session_start();
 if (isset($_POST['nombre'])){
     $Nombre = $_POST['nombre'];
     $apPat = $_POST['apPat'];
@@ -11,7 +11,7 @@ if (isset($_POST['nombre'])){
     $Telefono = $_POST['Telefono'];
     $RefArt = $_POST['RefArt'];
     $categoria = $_POST['categoria'];
-    $idUsuario = $_POST['idUser'];
+    $idUsuario = $_SESSION['idUserPer'];
 
     $insertar = "INSERT into escritor values(default, '$Nombre', '$apMat', '$apPat', '$Edad', '$categoria', 'Y', '$RFC', '$Direccion', '$Telefono', '$RefArt', $idUsuario)";
 

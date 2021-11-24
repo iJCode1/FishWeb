@@ -85,7 +85,10 @@
             dataType: "json",
             success: function(data){
                 if(data.success = 1){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Exito!", "usuario guardado correctamente", "success");
+                    window.location.href = "datosPersonalesEscritor.php?"+"idUser="+data.idUser;
+                }else{
+                  swal("ERROR!", "error al registrar el usuario", "error");
                 }
             }
         });

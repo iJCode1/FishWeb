@@ -60,11 +60,7 @@ $select = mysqli_query($db, $query) or die ("error");
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
                 <ul class="navbar-nav mr-0 fish__login--btn">
-                    <li class="nav-item active text-center mx-2 nav__item">
-                    <a class="nav-link text-white nav__item">
-                    <i class="fa fa-user fa-icon nav__item"></i>
-                </a>
-                </li>
+                    
                 <li class="nav-item active text-center mx-2 nav__item">
                     <a class="nav-link text-white nav__item" href="login.php">
                     <i class="fa fa-sign-in fa-icon nav__item"></i>
