@@ -2,6 +2,7 @@
 session_start();
 
 include "db.php";
+$response = array();
 
 $autor = $_POST["autor"];
 $fecha = $_POST["fecha"];
@@ -10,6 +11,7 @@ $titulo = $_POST["titulo"];
 $articulo = $_POST["articulo"];
 $publicado = $_POST["publicado"];
 $idEsc = $_SESSION['idEsc'];
+$idUser = $_SESSION['idUser'];
 
 
 
@@ -21,5 +23,8 @@ if($publicado == 'N'){
     $resultado = mysqli_query($db, $query) or die("Error al insertar los registros");
 }
 
+$response['idUser'] = $idUser;
+
+echo json_encode($response);
 
 ?>

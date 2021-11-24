@@ -11,8 +11,9 @@ if (isset($_POST['nombre'])){
     $Telefono = $_POST['Telefono'];
     $RefArt = $_POST['RefArt'];
     $categoria = $_POST['categoria'];
+    $idUsuario = $_POST['idUser'];
 
-    $insertar = "INSERT into escritor values(default, '$Nombre', '$apMat', '$apPat', '$Edad', '$categoria', 'Y', '$RFC', '$Direccion', '$Telefono', '$RefArt', 8)";
+    $insertar = "INSERT into escritor values(default, '$Nombre', '$apMat', '$apPat', '$Edad', '$categoria', 'Y', '$RFC', '$Direccion', '$Telefono', '$RefArt', $idUsuario)";
 
     $resultado = mysqli_query($db, $insertar) or die("Error al insertar los registros");
 

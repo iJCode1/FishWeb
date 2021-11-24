@@ -1,29 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <?php
-  include "db.php";
-  setlocale(LC_ALL,"es_ES");
-  $idUsuario = $_GET['id_user'];
+session_start();
+$idArt = $_GET['id_art'];
+$idUser = $_GET['idUser'];
+$_SESSION['id_art'] = $idArt;
+$_SESSION['idUser'] = $idUser;
 
-  $consultar = "SELECT * FROM escritor WHERE idUsuario= $idUsuario";
+include 'db.php';
+$query = "SELECT * from articulo where idArticulo = " . $idArt;
 
-  $resultado = mysqli_query($db, $consultar) or die("Error al buscar registros");
+$select = mysqli_query($db,$query);
 
-  while($datos = mysqli_fetch_array($resultado)){
-      $nombre = $datos['nombre'];
-      $apPat = $datos['apPat'];
-      $apMat = $datos['apMat'];
-      $idEscritor = $datos['idEscritor'];
-  }
-
-  session_start();
-  $_SESSION['idEsc'] = $idEscritor;
-  $_SESSION['idUser'] = $idUsuario;
+while($datos = mysqli_fetch_array($select)){
+    $categoria = $datos['categoria'];
+    $titulo = $datos['titulo'];
+    $articulo = $datos['articulo'];
+}     
 
 ?>
-
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,40 +39,10 @@
       </div>
     </div>
     <div class="text-center">
-    <h1>Escribir articulo<hr></h1>
+    <h1>Editar articulo<hr></h1>
     </div>
     <div>
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-12">
-        <p style="font-size: 25px;"><STrong>AUTOR</STrong></p>
-        </div>
-      </div>
-      <div class="row">
-        
-        <div class="col-4">
-        <div class="form-group">
-        <label for="Nombre_escritor">Nombre</label>
-        <input required name="Nombre_escritor" type="text" class="form-control" id="Nombre_escritor" <?php echo "value = '" . $nombre . "'"?> disabled>                            
-    </div>
-    
-        </div>
-        <div class="col-4">
-        
-    <div class="form-group">
-        <label for="Nombre_apellidoP">Apellido Paterno</label>
-        <input required name="Nombre_apellidoP" type="text" class="form-control" id="Nombre_apellidoP" <?php echo "value = '" . $apPat . "'"?> disabled>                            
-    </div>
-        </div>
-        <div class="col-4">
-        
-    <div class="form-group">
-        <label for="Nombre_apellidoM">Ampellido Materno</label>
-        <input required name="Nombre_apellidoM" type="text" class="form-control" id="Nombre_apellidoM" <?php echo "value = '" . $apMat . "'"?> disabled>                            
-    </div>
-        </div>
-      
-      </div>
+    <div class="container text-center">      
       <div class="row">
         <div class="col-3">
           <div class="form-group">
@@ -106,11 +71,11 @@
 
       <div class="form-group">
               <label for="titulo"><strong>Titulo del articulo: <hr></strong> </label>
-              <input required name="titulo" type="text" class="form-control" id="titulo">                            
+              <input <?php echo "value= '" . $titulo . "'";?> required name="titulo" type="text" class="form-control" id="titulo">                         
           </div>
           <div class="form-group">
               <label for="textarea"><strong>Contenido: <hr></strong> </label>
-              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30"></textarea>                            
+              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30"><?php echo $articulo;?> </textarea>                            
           </div>
       
     </div>
@@ -129,36 +94,32 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
-  $(document).ready(function(){
+      $(document).ready(function(){
+        $("#publicar_now").click(function(){
 
-      $("#publicar_now").click(function(){
-
-
-        var datosArticulo = {
-          "autor" : $("#Nombre_escritor").val() + " " + $("#Nombre_apellidoP").val() + " " + $("#Nombre_apellidoM").val(),
-          "fecha" : $("#fecha").val(),
-          "categoria" : $("#categoria").val(),
-          "titulo" : $("#titulo").val(),
-          "articulo" : $("#textarea").val(),
-          "publicado" : "N"
+        var datosArticulo = {         
+        "fecha" : $("#fecha").val(),
+        "categoria" : $("#categoria").val(),
+        "titulo" : $("#titulo").val(),
+        "articulo" : $("#textarea").val(),
+        "publicado" : "N"
         };
 
         $.ajax({
             type: "POST",
-            url: 'crearArticulo.php',
+            url: 'editarArticulo.php',
             data: datosArticulo,
             dataType: "json",
             success: function(response)
                 {
-                    swal("Exito", "Articulo creado correctamente!", "success");
+                    swal("Exito!", "Articulo editado correctamente!", "success");
                     window.location.href = "homeEscritor.php?id_user="+response.idUser;
-                      
+                    
                 }
         });
 
-      });
-      
-  });
+        });
+      });     
 </script>
 
 

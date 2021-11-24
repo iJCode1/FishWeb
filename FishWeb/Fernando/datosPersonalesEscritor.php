@@ -119,6 +119,7 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
   </script>
   <script src="librerias/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#registrar_esc").click(function(e){      
@@ -139,8 +140,7 @@
             data: parametros,
             success: function(response)
                 {
-                    alert("datos insertados correctamente");
-                    window.location.href = "homeEscritor.php";  
+                    swal("Exito!", "datos insertados correctamente!", "success");
                 }
         });
             

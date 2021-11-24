@@ -5,6 +5,7 @@
   include "db.php";
   setlocale(LC_ALL,"es_ES");
   $idUsuario = $_GET['id_user'];
+  $idArt = $_GET['id_art'];
 
   $consultar = "SELECT * FROM escritor WHERE idUsuario= $idUsuario";
 
@@ -20,6 +21,19 @@
   session_start();
   $_SESSION['idEsc'] = $idEscritor;
   $_SESSION['idUser'] = $idUsuario;
+
+
+
+
+  $query = "SELECT * from articulo where idArticulo = " . $idArt;
+
+$select = mysqli_query($db,$query);
+
+while($datos1 = mysqli_fetch_array($select)){
+    $categoria = $datos1['categoria'];
+    $titulo = $datos1['titulo'];
+    $articulo = $datos1['articulo'];
+}  
 
 ?>
 
@@ -88,7 +102,7 @@
         <div class="col-3">
         <div class="form-group">
           <label for="categoria">Temas de interes: </label>
-            <select class="form-control" id="categoria">
+            <select class="form-control" id="categoria" disabled>
               <option value="Canas">Cañas de pescar</option>
               <option value="Anzuelos">Anzuelos de pezca</option>
               <option value="Pescados">Pescados exóticos</option>
@@ -97,7 +111,7 @@
         </div>
         </div>
         <div class="col-3">        
-        <button id="btn_guardar" class="btn btn-success" style="width: 100%; margin-top: 30px;" type="button" data-toggle="modal" data-target="#publicar">Guardar</button> 
+        <button id="btn_regresar" class="btn btn-info" style="width: 100%; margin-top: 30px;" type="button">Regresar</button> 
         </div>
         <div class="col-3">    
                      
@@ -106,11 +120,11 @@
 
       <div class="form-group">
               <label for="titulo"><strong>Titulo del articulo: <hr></strong> </label>
-              <input required name="titulo" type="text" class="form-control" id="titulo">                            
+              <input <?php echo "value= '" . $titulo . "'";?> required name="titulo" type="text" class="form-control" id="titulo" disabled>                            
           </div>
           <div class="form-group">
               <label for="textarea"><strong>Contenido: <hr></strong> </label>
-              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30"></textarea>                            
+              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30" disabled><?php echo $articulo;?></textarea>                            
           </div>
       
     </div>
@@ -126,63 +140,19 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
   </script>
 <script src="librerias/jquery.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script>
-  $(document).ready(function(){
+<?php
+echo "<script>";
+echo "$('#btn_regresar').click(function(){";
+    echo "window.location.href = 'homeEscritor.php?id_user=" . $idUsuario . "';";
+echo "});";
+echo "</script>";
+?>
 
-      $("#publicar_now").click(function(){
-
-
-        var datosArticulo = {
-          "autor" : $("#Nombre_escritor").val() + " " + $("#Nombre_apellidoP").val() + " " + $("#Nombre_apellidoM").val(),
-          "fecha" : $("#fecha").val(),
-          "categoria" : $("#categoria").val(),
-          "titulo" : $("#titulo").val(),
-          "articulo" : $("#textarea").val(),
-          "publicado" : "N"
-        };
-
-        $.ajax({
-            type: "POST",
-            url: 'crearArticulo.php',
-            data: datosArticulo,
-            dataType: "json",
-            success: function(response)
-                {
-                    swal("Exito", "Articulo creado correctamente!", "success");
-                    window.location.href = "homeEscritor.php?id_user="+response.idUser;
-                      
-                }
-        });
-
-      });
       
-  });
-</script>
 
-
-
-<!-- Modal -->
-<div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>¿Estas seguro que deseas guardar el articulo?, si lo guardas ahora solopodras modificarlo desde el panel de control</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button id="publicar_now" type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
+      
+  
 
 
 </body>
