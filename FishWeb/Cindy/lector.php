@@ -71,7 +71,6 @@ if ($genero != "") {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="lector.php">Perfil</a>
                     <a class="dropdown-item" href="editar.php">Modificar mis datos</a>
-                    <a class="dropdown-item" href="comentarios.php">Mis comentarios</a>
                 </li>
 
                 <li class="nav-item active text-center mx-2 nav__item">

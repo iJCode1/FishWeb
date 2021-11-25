@@ -14,6 +14,6 @@ if (!$db)
 else 
 {
     mysqli_query($db, "SET NAMES 'UTF8'");
-    echo 'Conexión exitosa <br>';
+    //echo 'Conexión exitosa <br>';
 }
 ?>
