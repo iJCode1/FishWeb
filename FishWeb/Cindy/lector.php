@@ -70,7 +70,7 @@ if ($genero != "") {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="lector.php">Perfil</a>
-                    <a class="dropdown-item" href="modificar.php">Modificar mis datos</a>
+                    <a class="dropdown-item" href="editar.php?id_nosotros=<?php echo $i['id_nosotros']; ?>">Modificar mis datos</a>
                     <a class="dropdown-item" href="comentarios.php">Mis comentarios</a>
                 </li>
 
@@ -87,9 +87,52 @@ if ($genero != "") {
       </div>
     </div>
     <div>
-        <h2 class="text-center display-3">Lector</h2>
-    </div>
-</div>
+    <main class="Lector">
+      <div class="card mt-4 card--admin">
+        <div class="card-body">
+          <h2 class="text-center display-4 mt-3">Perfil</h2>
+          <hr class="mt-4 mb-3"/>
+          <table class="table table-hover table-striped mt-4">
+            <thead class="thead-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Edad</th>
+                <th>Genero</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Categoria de interes</th>
+              </tr>
+            </thead>
+            <?php
+
+                $consulta = "SELECT * from  lector, usuario";
+                $res_consulta = mysqli_query($db, $consulta);
+                while ($i = mysqli_fetch_array($res_consulta)) {
+                    ?>
+                            <tr>
+                            <td><?php echo $i['nombre'] ?></td>
+                            <td><?php echo $i['apPat'] ?></td>
+                            <td><?php echo $i['apMat'] ?></td>
+                            <td><?php echo $i['edad'] ?></td>
+                            <td><?php echo $i['genero'] ?></td>
+                            <td><?php echo $i['usuario'] ?></td>
+                            <td><?php echo $i['correo'] ?></td>
+                            <td><?php echo $i['rol'] ?></td>
+                            <td><?php echo $i['categoria'] ?></td>
+                            </tr>
+                            <?php
+                }
+
+                ?>
+                    </table>
+                        </div>
+                    </div>
+                    </main>
+                </div>
+
 <footer class="fixed-bottom">
     <p>FishWeb</p>
 </footer>
