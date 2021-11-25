@@ -44,10 +44,10 @@ $usuario = $_SESSION["usuario"];
                     Categorías
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cañas de pesca</a>
-                    <a class="dropdown-item" href="#">Anzuelos de pesca</a>
-                    <a class="dropdown-item" href="#">Pescados exóticos</a>
-                    <a class="dropdown-item" href="#">Lugares en méxico para pescar</a>
+                    <a class="dropdown-item" href="articulos.php">Cañas de pesca</a>
+                    <a class="dropdown-item" href="articulos.php">Anzuelos de pesca</a>
+                    <a class="dropdown-item" href="articulos.php">Pescados exóticos</a>
+                    <a class="dropdown-item" href="articulos.php">Lugares en méxico para pescar</a>
                 </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -55,7 +55,7 @@ $usuario = $_SESSION["usuario"];
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
                 <ul class="navbar-nav mr-0 fish__login--btn">
-                    <li class="nav-item active text-center mx-2 nav__item">
+                <li class="nav-item dropdown nav__item text-center">
                     <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user fa-icon nav__item"></i>
     <?php
@@ -69,11 +69,11 @@ if ($genero != "") {
 }?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Perfil</a>
-                    <a class="dropdown-item" href="#">Comentarios</a>
-
+                    <a class="dropdown-item" href="lector.php">Perfil</a>
+                    <a class="dropdown-item" href="modificar.php">Modificar mis datos</a>
+                    <a class="dropdown-item" href="comentarios.php">Mis comentarios</a>
                 </li>
-                
+
                 <li class="nav-item active text-center mx-2 nav__item">
                     <a class="nav-link text-white nav__item" href="salir.php">
                     <i class="fa fa-sign-in fa-icon nav__item"></i>
