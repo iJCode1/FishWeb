@@ -1,25 +1,27 @@
 <?php
-require 'db.php';
+include 'db.php';
 session_start();
 
 $genero = $_SESSION["genero"];
 $usuario = $_SESSION["usuario"];
+
+$sentencia = "SELECT * FROM usuario, lector";
+$res_consulta = mysqli_query($db, $sentencia);
+$i = mysqli_fetch_array($res_consulta);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="shortcut icon" href="../images/icon/logo.png" type="image/x-icon">
-  <title>FishWeb - Lector</title>
+  <title>FishWeb - Editar</title>
 </head>
-
 <body>
 <div class="container-fluid mb-4">
     <div class="jumbotron">
@@ -86,63 +88,44 @@ if ($genero != "") {
         </nav>
       </div>
     </div>
-    <div>
-    <main class="Lector">
-      <div class="card mt-4 card--admin">
-        <div class="card-body">
-          <h2 class="text-center display-4 mt-3">Perfil</h2>
-          <hr class="mt-4 mb-3"/>
-          <table class="table table-hover table-striped mt-4">
-            <thead class="thead-dark">
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Edad</th>
-                <th>Genero</th>
-                <th>Usuario</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Categoria de interes</th>
-              </tr>
-            </thead>
-            <?php
-
-                $consulta = "SELECT * from  lector, usuario";
-                $res_consulta = mysqli_query($db, $consulta);
-                while ($i = mysqli_fetch_array($res_consulta)) {
-                    ?>
-                            <tr>
-                            <td><?php echo $i['nombre'] ?></td>
-                            <td><?php echo $i['apPat'] ?></td>
-                            <td><?php echo $i['apMat'] ?></td>
-                            <td><?php echo $i['edad'] ?></td>
-                            <td><?php echo $i['genero'] ?></td>
-                            <td><?php echo $i['usuario'] ?></td>
-                            <td><?php echo $i['correo'] ?></td>
-                            <td><?php echo $i['rol'] ?></td>
-                            <td><?php echo $i['categoria'] ?></td>
-                            </tr>
-                            <?php
-                }
-
-                ?>
-                    </table>
-                        </div>
-                    </div>
-                    </main>
-                </div>
-
-<footer class="fixed-bottom">
-    <p>FishWeb</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-  </script>
-  <script src="./js/index.js"></script>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h3 class="text-white text-center py-1">
+          Modificar datos de lector</h3>
+          <form class="form__login px-4" method="post" action="modificar.php">
+          <div class="form-group">
+            <i class="fa fa-address-card"></i>
+            <label for="InputUsuario">Usuario</label>
+            <input type="text" class="form-control" id="InputUsuario" aria-describedby="Usuario"
+              placeholder="Usuario" name="txtUsuario" value="<?php echo $i['usuario'] ?>" required>
+             
+          </div>
+          <div class="form-group">
+              <i class="fa fa-hashtag"></i>
+              <label for="InputCategoria">Categoria de interes</label>
+              <input type="text" class="form-control" id="InputCategoria" aria-describedby="Categoria"
+              placeholder="Categoria" name="txtCategoria" value="<?php echo $i['categoria'] ?>" required>
+              
+          </div>
+            <div class="form-group">
+              <i class="fa fa-eye"></i>
+              <label for="InputContraseña">Contraseña</label>
+              <input type="password" class="form-control" id="InputContraseña" aria-describedby="Contraseña"
+              placeholder="Contraseña" name="txtContraseña" value="<?php echo $i['contraseña'] ?>" required>
+              
+            </div> 
+          <button type="submit" class="btn btn-warning btn-block">
+            <i class="fa fa-check-circle-o"></i>
+            Modificar</button>
+          <!-- <a type="submit" class="btn btn-warning btn-block" href="modificar.php">
+            <i class="fa fa-check-circle-o"></i>
+            Modificar</a> -->
+          <a href="lector.php" class="btn btn-success btn-block">
+            <i class="fa fa-arrow-left"></i>
+            Regresar</a>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
-
 </html>
