@@ -30,6 +30,7 @@
     <section class="contact-box">
       <div class="row no-gutters bg-dark">
         <div class="col-xl-5 col-lg-12 register-bg">
+          <!-- Frase de FishWeb -->
           <div class="position-absolute testiomonial p-4">
             <h3 class="font-weight-bold text-light">
               Pescando en la red con FishWeb
@@ -41,12 +42,22 @@
         </div>
         <div class="col-xl-7 col-lg-12 d-flex">
           <div class="container align-self-center p-6">
+            <!-- Titulo de Registro Lectores-->
             <h1 class="font-weight-bold mb-3">Lectores</h1>
+            <!-- Instrucciones para registrarse -->
             <p class="text-muted mb-5">
               Ingresa la siguiente información para registrarte.
             </p>
-            <form>
+
+            <!-- Formulario -->
+            <form
+              method="post"
+              action="guardar-bd/registrar-lector.php"
+              class="was-validated"
+              name="formulario"
+            >
               <div class="form-row mb-2">
+                <!-- Nombre -->
                 <div class="form-group col-md-6">
                   <label class="font-weight-bold"
                     >Nombre(s) <span class="text-danger">*</span></label
@@ -55,9 +66,13 @@
                     id="txt-nombre"
                     type="text"
                     class="form-control"
+                    name="get-nombre"
                     placeholder="Tu nombre"
+                    required
                   />
                 </div>
+
+                <!-- Apellido Paterno -->
                 <div class="form-group col-md-6">
                   <label class="font-weight-bold"
                     >Apellido Paterno<span class="text-danger">*</span></label
@@ -66,11 +81,15 @@
                     id="txt-apPaterno"
                     type="text"
                     class="form-control"
+                    name="get-apPaterno"
                     placeholder="Tu apellido Paterno"
+                    required
                   />
                 </div>
               </div>
+
               <div class="form-row mb-2">
+                <!-- Apellido Materno -->
                 <div class="form-group col-md-6">
                   <label class="font-weight-bold"
                     >Apellido Materno <span class="text-danger">*</span></label
@@ -79,9 +98,13 @@
                     id="txt-apMaterno"
                     type="text"
                     class="form-control"
+                    name="get-apMaterno"
                     placeholder="Tu apellido Materno"
+                    required
                   />
                 </div>
+
+                <!-- Edad -->
                 <div class="form-group col-md-6">
                   <label class="font-weight-bold"
                     >Edad <span class="text-danger">*</span></label
@@ -90,10 +113,14 @@
                     id="txt-edad"
                     type="number"
                     class="form-control"
+                    name="get-edad"
                     placeholder="Tu edad"
+                    required
                   />
                 </div>
               </div>
+
+              <!-- Temas de Interes-->
               <div class="form-group mb-3">
                 <label class="font-weight-bold" for="txt-catInteres"
                   >Temas de interés <span class="text-danger">*</span></label
@@ -101,17 +128,20 @@
                 <select
                   class="form-control"
                   id="txt-catInteres"
-                  name="categorias-interes"
-                  multiple="true"
+                  multiple
+                  name="get-catInteres[]"
+                  required
                 >
-                  <option value="categoriaUno">Cañas de pesca</option>
-                  <option value="categoriaDos">Anzuelos de pesca</option>
-                  <option value="categoriaTres">Pescados exóticos</option>
-                  <option value="categoriaCuatro">
+                  <option value="Cañas de pesca">Cañas de pesca</option>
+                  <option value="Anzuelos de pesca">Anzuelos de pesca</option>
+                  <option value="Pescados exóticos">Pescados exóticos</option>
+                  <option value="Lugares en México para pescar">
                     Lugares en México para pescar
                   </option>
                 </select>
               </div>
+
+              <!-- Términos de uso y políticas de privacidad -->
               <div class="form-group mb-5">
                 <div class="form-check">
                   <input
@@ -121,17 +151,22 @@
                   />
                   <label class="form-check-label text-muted"
                     >Al seleccionar esta casilla aceptas nuestros
-                    <a href="Terminos/terminos.html" target="_blank"
+                    <a href="terminos-condiciones/terminos.html" target="_blank"
                       >términos y condiciones</a
                     >
                     y nuestras
-                    <a href="Politicas/politicas.html" target="_blank"
+                    <a
+                      href="politicas-privacidad/politicas.html"
+                      target="_blank"
                       >políticas de privacidad</a
                     >
                   </label>
                 </div>
               </div>
+
+              <!-- Botón submit -->
               <button
+                type="submit"
                 id="boton"
                 class="btn btn-primary width-100"
                 name="botonRegistrate"
@@ -139,8 +174,12 @@
               >
                 Regístrate
               </button>
+
+              <!-- Validar checkbox y campos vacios-->
               <script src="validar.js"></script>
             </form>
+
+            <!-- Leyenda de derechos de autor César-ITTol -->
             <small class="d-inline-block text-muted mt-5"
               >Todos los derechos reservados | © 2021 TecNM ITTol</small
             >
@@ -148,8 +187,8 @@
         </div>
       </div>
     </section>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
