@@ -1,3 +1,9 @@
+<?php
+$correo=$_POST['txtCorreo'];
+$contraseña=$_POST['txtContraseña'];
+$usuario=$_POST['txtUsuario'];
+$genero=$_POST['txtGenero'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -139,6 +145,77 @@
                     Lugares en México para pescar
                   </option>
                 </select>
+              </div>
+
+              <div class="form-row mb-2">
+                <!-- correo -->
+                <div class="form-group col-md-6">
+                <label class="font-weight-bold" for="txt-correo"
+                  >Correo <span class="text-danger">*</span></label
+                >
+                  <input
+                    id="txt-correo"
+                    type="email"
+                    class="form-control"
+                    name="get-correo"
+                    placeholder="correo"
+                    value="<?php echo $correo; ?>"
+                    required
+                    readonly
+                  />
+                </div>
+
+                <!-- contraseña -->
+                <div class="form-group col-md-6">
+                <label class="font-weight-bold" for="txt-pass"
+                  >Contraseña <span class="text-danger">*</span></label
+                >
+                  <input
+                    id="txt-pass"
+                    type="password"
+                    class="form-control"
+                    name="get-pass"
+                    placeholder="Tu contraseña"
+                    value="<?php echo $contraseña; ?>"
+                    required
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="form-row mb-2">
+              <!-- usuario -->
+              <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="txt-usuario"
+                  >Nombre de usuario <span class="text-danger">*</span></label
+                >
+                  <input
+                    id="txt-usuario"
+                    type="text"
+                    class="form-control"
+                    name="get-usuario"
+                    placeholder="Tu usuario"
+                    value="<?php echo $usuario; ?>"
+                    required
+                    readonly
+                  />
+              </div>
+              <!-- genero -->
+              <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="txt-genero"
+                  >Genero <span class="text-danger">*</span></label
+                >
+                  <input
+                    id="txt-genero"
+                    type="text"
+                    class="form-control"
+                    name="get-genero"
+                    placeholder="Tu genero"
+                    value="<?php echo $genero; ?>"
+                    required
+                    readonly
+                  />
+                </div>
               </div>
 
               <!-- Términos de uso y políticas de privacidad -->

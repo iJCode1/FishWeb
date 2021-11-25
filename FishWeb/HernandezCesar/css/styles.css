@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #e8f4e4;
+}
+a {
+  cursor: pointer;
+}
+.container-fluid {
+  padding: 0;
+}
+.nav__item {
+  color: white;
+  margin-inline: 5px;
+}
+.nav__link {
+  color: white;
+}
+.nav__item:hover i {
+  color: #F9D5A7;
+}
+.jumbotron {
+  padding: 0;
+}
+.jumbo__partone {
+  background-color: #F0A500;
+  margin: 0;
+  padding: 1.5rem;
+}
+.jumbo__parttwo {
+  background-color: #334756;
+  padding: 0.5rem;
+}
+.navbar {
+  padding: 0;
+}
+.fa-icon {
+  display: block;
+  font-size: 20px;
+}
+.card {
+  width: 50vw;
+  margin: 0 auto;
+}
+.card--admin {
+  width: 90vw;
+}
+.form__login {
+  margin-top: 44px;
+}
+.display__none {
+  display: none;
+}
+.error {
+  color: red;
+}
+input:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.fish__login--btn{
+  margin-left: 30px;
+}
+.carouselWrapper{
+  max-width: 1000px;
+  max-height: 560px;
+  padding-inline: 10px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+.carousel-item img{
+  max-width: 1000px;
+  max-height: 560px;
+}
+footer{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  color: white;
+  background-color: #082032;
+}
+footer p{
+  margin: 0;
+}
+/* -----------------------------    Login */
+.card h3{
+  background-color: #F2BB7B;
+}
+.btn__registrar{
+  background-color: #6E85B2;
+  color: white;
+}
+.btn__registrar:hover{
+  background-color: #334c7d;
+  color: white;
+  transform: scale(1.03);
+}
+.btn__regresar{
+  background-color: #FA8072;
+  color: white;
+}
+.btn__regresar:hover{
+  background-color: #912317;
+  color: white;
+  transform: scale(1.03);
+}
+/* -----------------------------    Nosotros */
+.involucrados{
+  margin-bottom: 82px;
+}
