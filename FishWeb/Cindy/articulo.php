@@ -152,7 +152,7 @@ if ($genero != "") {
         </div>
 
         <div class="col-3">        
-        <button id="btn_regresar" class="btn btn-info" style="width: 100%; margin-top: 120px;" type="button">Comentar</button> 
+        <button id="btncomentar" class="btn btn-info" style="width: 100%; margin-top: 120px;" type="button">Comentar</button> 
         </div>
         
       </div>
@@ -174,8 +174,16 @@ if ($genero != "") {
 
 <?php
 echo "<script>";
-echo "$('#btn_regresar').click(function(){";
-    echo "window.location.href = 'homeEscritor.php?id_user=" . $idUsuario . "';";
+echo "$('#btncomentar').click(function(){";
+    $sentencia3 = "INSERT INTO comentarios(usuario,articulo,comentario) VALUES('x','x','x')";
+    if (mysqli_query($db, $sentencia3)) 
+{
+    header('Location: articulo.php?mensaje=registrado');
+   
+} else 
+{
+    header('Location: articulo.php?mensaje=no registrado');
+}
 echo "});";
 echo "</script>";
 ?>
