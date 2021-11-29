@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <?php
+require 'db.php';
+session_start();
+
+$genero = $_SESSION["genero"];
+$usuario = $_SESSION["usuario"];
+?>
+<?php
   include "db.php";
   setlocale(LC_ALL,"es_ES");
   $idUsuario = $_GET['id_user'];
