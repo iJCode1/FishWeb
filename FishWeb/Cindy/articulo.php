@@ -1,49 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <?php
-require 'db.php';
+include "db.php";
 session_start();
 
 $genero = $_SESSION["genero"];
 $usuario = $_SESSION["usuario"];
-?>
-<?php
-  include "db.php";
-  setlocale(LC_ALL,"es_ES");
-  $idUsuario = $_GET['id_user'];
-  $idArt = $_GET['id_art'];
-
-  $consultar = "SELECT * FROM escritor WHERE idUsuario= $idUsuario";
-
-  $resultado = mysqli_query($db, $consultar) or die("Error al buscar registros");
-
-  while($datos = mysqli_fetch_array($resultado)){
-      $nombre = $datos['nombre'];
-      $apPat = $datos['apPat'];
-      $apMat = $datos['apMat'];
-      $idEscritor = $datos['idEscritor'];
-  }
-
-  session_start();
-  $_SESSION['idEsc'] = $idEscritor;
-  $_SESSION['idUser'] = $idUsuario;
 
 
+$sentencia = "SELECT * FROM articulo WHERE categoria='Cañas de pesca'";
 
 
-  $query = "SELECT * from articulo where idArticulo = " . $idArt;
+$res_consulta = mysqli_query($db, $sentencia);
+$i = mysqli_fetch_array($res_consulta);
 
-$select = mysqli_query($db,$query);
-
-while($datos1 = mysqli_fetch_array($select)){
-    $categoria = $datos1['categoria'];
-    $titulo = $datos1['titulo'];
-    $articulo = $datos1['articulo'];
-}  
+$sentencia2 = "SELECT * FROM comentarios WHERE articulo=''".$i['articulo'];
 
 ?>
-
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,9 +24,9 @@ while($datos1 = mysqli_fetch_array($select)){
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="shortcut icon" href="images/icon/logo.png" type="image/x-icon">
-  <title>FishWeb - Escritor</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="shortcut icon" href="../images/icon/logo.png" type="image/x-icon">
+  <title>FishWeb - Articulo</title>
 </head>
 
 <body>
@@ -62,76 +35,128 @@ while($datos1 = mysqli_fetch_array($select)){
       <div class="jumbo__partone">
         <h1 class="display-4 text-white text-center font-weight-bold">FishWeb</h1>
       </div>
+      <div class="jumbo__parttwo">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active nav__item text-center">
+                    <a class="nav-link nav__item text-white" href="./lector.php">
+                    <i class="fa fa-home fa-icon nav__item"></i>
+                    Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown nav__item text-center">
+                    <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-list fa-icon nav__item"></i>
+                    Categorías
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="articulo.php">Cañas de pesca</a>
+                    <a class="dropdown-item" href="articulos.php">Anzuelos de pesca</a>
+                    <a class="dropdown-item" href="articulos.php">Pescados exóticos</a>
+                    <a class="dropdown-item" href="articulos.php">Lugares en méxico para pescar</a>
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Articulo" aria-label="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav mr-0 fish__login--btn">
+                <li class="nav-item dropdown nav__item text-center">
+                    <a class="nav-link dropdown-toggle nav__item text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user fa-icon nav__item"></i>
+    <?php
+if ($genero != "") {
+    if ($genero == "F") {
+        echo "Bienvenida  " . $usuario;
+    } else if($genero == "M") {
+        echo "Bienvenido  " . $usuario;
+    }
+    ?><?php
+}?>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="lector.php">Perfil</a>
+                    <a class="dropdown-item" href="editar.php">Modificar mis datos</a>
+                </li>
+
+                <li class="nav-item active text-center mx-2 nav__item">
+                    <a class="nav-link text-white nav__item" href="salir.php">
+                    <i class="fa fa-sign-in fa-icon nav__item"></i>
+                    Cerrar Sesión
+                </a>
+                </li>
+                
+                </ul>
+            </div>
+        </nav>
+      </div>
     </div>
+
     <div class="text-center">
-    <h1>Escribir articulo<hr></h1>
+    <h1>Articulo<hr></h1>
     </div>
+
     <div>
     <div class="container text-center">
-      <div class="row">
-        <div class="col-12">
-        <p style="font-size: 25px;"><STrong>AUTOR</STrong></p>
-        </div>
-      </div>
-      <div class="row">
-        
+
+    <div class="row">
         <div class="col-4">
         <div class="form-group">
-        <label for="Nombre_escritor">Nombre</label>
-        <input required name="Nombre_escritor" type="text" class="form-control" id="Nombre_escritor" <?php echo "value = '" . $nombre . "'"?> disabled>                            
+        <label for="autor">Autor</label>
+        <input required name="autor" type="text" class="form-control" id="autor" value="<?php echo $i['autor'] ?>" disabled>                            
     </div>
     
         </div>
+
         <div class="col-4">
-        
-    <div class="form-group">
-        <label for="Nombre_apellidoP">Apellido Paterno</label>
-        <input required name="Nombre_apellidoP" type="text" class="form-control" id="Nombre_apellidoP" <?php echo "value = '" . $apPat . "'"?> disabled>                            
-    </div>
-        </div>
-        <div class="col-4">
-        
-    <div class="form-group">
-        <label for="Nombre_apellidoM">Ampellido Materno</label>
-        <input required name="Nombre_apellidoM" type="text" class="form-control" id="Nombre_apellidoM" <?php echo "value = '" . $apMat . "'"?> disabled>                            
-    </div>
-        </div>
-      
-      </div>
-      <div class="row">
-        <div class="col-3">
           <div class="form-group">
             <label for="fecha">Fecha</label>
-            <input required name="fecha" type="text" class="form-control" id="fecha" <?php echo "value = '" . date('d')-1 . "-" . date('m') . "-" . date('Y') . "'"?> disabled>                            
+            <input required name="fecha" type="text" class="form-control" id="fecha"  value="<?php echo $i['fecha'] ?>" disabled>                            
         </div>
+
         </div>
-        <div class="col-3">
+
+        <div class="col-4">
         <div class="form-group">
           <label for="categoria">Temas de interes: </label>
             <select class="form-control" id="categoria" disabled>
-              <option value="Canas">Cañas de pescar</option>
+              <option value="Canas">Cañas de pesca</option>
               <option value="Anzuelos">Anzuelos de pezca</option>
               <option value="Pescados">Pescados exóticos</option>
               <option value="Lugares">Lugares en México para pescar</option>
             </select>
         </div>
         </div>
-        <div class="col-3">        
-        <button id="btn_regresar" class="btn btn-info" style="width: 100%; margin-top: 30px;" type="button">Regresar</button> 
-        </div>
-        <div class="col-3">    
-                     
-        </div>
+      
       </div>
-
+     
       <div class="form-group">
               <label for="titulo"><strong>Titulo del articulo: <hr></strong> </label>
-              <input <?php echo "value= '" . $titulo . "'";?> required name="titulo" type="text" class="form-control" id="titulo" disabled>                            
+              <input  value="<?php echo $i['titulo'] ?>" required name="titulo" type="text" class="form-control" id="titulo" disabled>                            
           </div>
           <div class="form-group">
               <label for="textarea"><strong>Contenido: <hr></strong> </label>
-              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30" disabled><?php echo $articulo;?></textarea>                            
+              <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30" disabled><?php echo $i['articulo'] ?></textarea>                            
           </div>
+
+          <div class="row">
+        
+          <div class="col-8">    
+        <div class="form-group">
+              <label for="textarea"><strong>Comentarios: <hr></strong> </label>
+              <textarea name="textarea" style="padding: 50px; width: 90%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="2"  value="<?php echo $i['articulo'] ?>" required></textarea>                            
+          </div>       
+        </div>
+
+        <div class="col-3">        
+        <button id="btn_regresar" class="btn btn-info" style="width: 100%; margin-top: 120px;" type="button">Comentar</button> 
+        </div>
+        
+      </div>
+
       
     </div>
     </div>
