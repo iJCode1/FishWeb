@@ -15,6 +15,7 @@ $res_consulta = mysqli_query($db, $sentencia);
 $i = mysqli_fetch_array($res_consulta);
 
 
+
 ?>
 <head>
   <meta charset="UTF-8">
@@ -53,9 +54,9 @@ $i = mysqli_fetch_array($res_consulta);
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="articulo.php">Cañas de pesca</a>
-                    <a class="dropdown-item" href="articulos.php">Anzuelos de pesca</a>
-                    <a class="dropdown-item" href="articulos.php">Pescados exóticos</a>
-                    <a class="dropdown-item" href="articulos.php">Lugares en méxico para pescar</a>
+                    <a class="dropdown-item" href="articulo.php">Anzuelos de pesca</a>
+                    <a class="dropdown-item" href="articulo.php">Pescados exóticos</a>
+                    <a class="dropdown-item" href="articulo.php">Lugares en méxico para pescar</a>
                 </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
