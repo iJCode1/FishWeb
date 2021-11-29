@@ -14,7 +14,6 @@ $sentencia = "SELECT * FROM articulo WHERE categoria='Cañas de pesca'";
 $res_consulta = mysqli_query($db, $sentencia);
 $i = mysqli_fetch_array($res_consulta);
 
-$sentencia2 = "SELECT * FROM comentarios WHERE articulo=''".$i['articulo'];
 
 ?>
 <head>
@@ -98,7 +97,7 @@ if ($genero != "") {
     <div class="text-center">
     <h1>Articulo<hr></h1>
     </div>
-
+    <form class="form__login px-4" method="post" action="comentario.php">
     <div>
     <div class="container text-center">
 
@@ -135,24 +134,62 @@ if ($genero != "") {
      
       <div class="form-group">
               <label for="titulo"><strong>Titulo del articulo: <hr></strong> </label>
-              <input  value="<?php echo $i['titulo'] ?>" required name="titulo" type="text" class="form-control" id="titulo" disabled>                            
+              <input  value="<?php echo $i['titulo'] ?>" name="titulo" type="text" class="form-control" id="titulo" >                            
           </div>
           <div class="form-group">
               <label for="textarea"><strong>Contenido: <hr></strong> </label>
               <textarea name="textarea" style="padding: 30px; width: 95%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="30" disabled><?php echo $i['articulo'] ?></textarea>                            
           </div>
+          <div>
+    <main class="Comentarios">
+      <div class="card mt-3 card--admin">
+        <div class="card-body">
+          <h2 >Comentarios</h2>
+          <hr class="mt-3 mb-3"/>
+          <table class="table table-hover table-striped mt-3">
+            <thead class="thead-dark">
+              <tr>
+                <th>Usuario</th>
+                <th>Articulo</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <?php
 
+                $consulta = "SELECT * from  comentarios WHERE articulo='Cañas de pesca'";
+                $res_consulta = mysqli_query($db, $consulta);
+                while ($i = mysqli_fetch_array($res_consulta)) {
+                    ?>
+                            <tr>
+                            <td><?php echo $i['usuario'] ?></td>
+                            <td><?php echo $i['articulo'] ?></td>
+                            <td><?php echo $i['comentario'] ?></td>
+                            <td><?php echo $i['fecha'] ?></td>
+                            </tr>
+                            <?php
+                }
+
+                ?>
+                    </table>
+                        </div>
+                    </div>
+                    </main>
+                </div>
+                <hr>
           <div class="row">
         
           <div class="col-8">    
         <div class="form-group">
-              <label for="textarea"><strong>Comentarios: <hr></strong> </label>
-              <textarea name="textarea" style="padding: 50px; width: 90%; margin: 0 auto;" class="form-control rounded-0" id="textarea" rows="2"  value="<?php echo $i['articulo'] ?>" required></textarea>                            
+              <label for="comentario"><strong>Comentar: <hr></strong> </label>
+              <textarea name="comentario" style="padding: 50px; width: 90%; margin: 0 auto;" class="form-control rounded-0" id="comentario" rows="2" required></textarea>                            
           </div>       
         </div>
 
-        <div class="col-3">        
-        <button id="btncomentar" class="btn btn-info" style="width: 100%; margin-top: 120px;" type="button">Comentar</button> 
+        <div class="col-3">
+        <button type="submit" class="btn btn-info" style="width: 80%; margin-top: 120px;">
+            <i class="fa fa-check-circle-o"></i>
+            Comentar</button>
         </div>
         
       </div>
@@ -161,6 +198,7 @@ if ($genero != "") {
     </div>
     </div>
 </div>
+</form>
 <footer class="fixed-bottom">
     <p>FishWeb</p>
 </footer>
@@ -171,27 +209,6 @@ if ($genero != "") {
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
   </script>
 <script src="librerias/jquery.min.js"></script>
-
-<?php
-echo "<script>";
-echo "$('#btncomentar').click(function(){";
-    $sentencia3 = "INSERT INTO comentarios(usuario,articulo,comentario) VALUES('x','x','x')";
-    if (mysqli_query($db, $sentencia3)) 
-{
-    header('Location: articulo.php?mensaje=registrado');
-   
-} else 
-{
-    header('Location: articulo.php?mensaje=no registrado');
-}
-echo "});";
-echo "</script>";
-?>
-
-      
-
-      
-  
 
 
 </body>
