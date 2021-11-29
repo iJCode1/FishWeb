@@ -10,7 +10,7 @@ echo $comentario;
 
 
 $sentencia2 = "INSERT INTO comentarios(usuario,articulo,comentario) VALUES('$usuario','$articulo','$comentario')";
-if (mysqli_query($db, $sentencia3)) 
+if (mysqli_query($db, $sentencia2)) 
 {
 header('Location: articulo.php?mensaje=registrado');
 
